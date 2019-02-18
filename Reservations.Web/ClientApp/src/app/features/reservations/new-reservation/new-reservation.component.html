@@ -1,0 +1,66 @@
+<form [formGroup]="reservationform" (ngSubmit)="onSubmit(reservationform.value)">
+    <p-panel header="New Reservation">
+      <div style="margin: 10px 0px">
+          <div class="p-grid">
+              <div class="p-col-2">
+                  From *:
+              </div>
+              <div class="p-col-6">
+                  <!--<input pInputText class="question-form-field" type="text" formControlName="fromDate" placeholder="Required"/>-->
+                  <p-calendar formControlName="fromDate" [showIcon]="true" placeholder="Required"></p-calendar>
+              </div>
+              <div class="p-col-4">
+                  <p-message severity="error" text="From is required" *ngIf="!reservationform.controls['fromDate'].valid&&reservationform.controls['fromDate'].dirty"></p-message>
+              </div>
+          </div>
+          <div class="p-grid">
+            <div class="p-col-2">
+                To *:
+            </div>
+            <div class="p-col-6">
+              <!--<input pInputText class="question-form-field" type="text" formControlName="toDate" placeholder="Required" />-->
+              <p-calendar formControlName="toDate" [showIcon]="true" placeholder="Required"></p-calendar>
+            </div>
+            <div class="p-col-4">
+                <p-message severity="error" text="To is required" *ngIf="!reservationform.controls['toDate'].valid&&reservationform.controls['toDate'].dirty"></p-message>
+            </div>
+        </div>
+          
+          <div class="p-grid">
+              <div class="p-col-2">
+                Lecture Hall:
+              </div>
+              <div class="p-col-6">
+                  <p-dropdown class="question-form-field" [options]="lectureHalls" formControlName="lecturerHall" [style]="{'width':'350px'}"></p-dropdown>
+              </div>
+              <div class="p-col-4">
+                <p-message severity="error" text="Lecturer is required" *ngIf="!reservationform.controls['lecturerHall'].valid&&reservationform.controls['lecturerHall'].dirty"></p-message>
+              </div>
+          </div>
+          <div class="p-grid">
+            <div class="p-col-2">
+              Lecturer:
+            </div>
+            <div class="p-col-6">
+                <p-dropdown class="question-form-field" [options]="lecturers" formControlName="lecturer" [autoWidth]="true" [style]="{'width':'350px'}"></p-dropdown>
+            </div>
+            <div class="p-col-4">
+              <p-message severity="error" text="Lecturer is required" *ngIf="!reservationform.controls['lecturer'].valid&&reservationform.controls['lecturer'].dirty"></p-message>
+            </div>
+        </div>
+
+          <div class="p-grid">
+              <div class="p-col-2"></div>
+              <div class="p-col-6">
+                  <button pButton class="question-form-field" type="submit" label="Submit" [disabled]="!reservationform.valid"></button>
+              </div>
+              <div class="p-col-4"></div>
+          </div>
+          <!--<div style="text-align:center;margin-top:20px" *ngIf="submitted">
+            Form Submitted
+            <br>
+            {{diagnostic}}
+          </div>-->
+      </div>
+    </p-panel>
+</form>

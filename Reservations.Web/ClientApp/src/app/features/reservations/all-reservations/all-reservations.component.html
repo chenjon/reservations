@@ -1,0 +1,22 @@
+<p-panel header="All Reservations">
+    <div style="margin: 10px 0px">
+        <p-table [value]="reservations">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Lecture Hall</th>
+                    <th>Lecturer</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-reservation>
+                <tr>
+                    <td>{{reservation.from}}</td>
+                    <td>{{reservation.to}}</td>
+                    <td>{{reservation.lectureHallNumber}}</td>
+                    <td>{{reservation.lecturer}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</p-panel>
